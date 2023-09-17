@@ -30,9 +30,11 @@ class MusicPlayer:
             if self.paused:
                 pygame.mixer.music.unpause()
                 self.paused = False
+                pause_button.config(text="Pause")
             else:
                 pygame.mixer.music.pause()
                 self.paused = True
+                pause_button.config(text="Resume")
 
 def select_music_file():
     file_path = filedialog.askopenfilename(filetypes=[("MP3 Files", "*.mp3")])
@@ -66,7 +68,7 @@ if __name__ == "__main__":
 
     root.configure(bg="#333333")
     window_width = 400
-    window_height = 350
+    window_height = 250
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     x_position = (screen_width - window_width) // 2
@@ -79,7 +81,7 @@ if __name__ == "__main__":
     ui_font = ("Helvetica", 14)
     play_button = tk.Button(button_frame, text="Play", font=ui_font, command=select_music_file)
     play_button.pack(side="left", padx=10)
-    pause_button = tk.Button(button_frame, text="Pause/Resume", font=ui_font, command=pause_resume_music)
+    pause_button = tk.Button(button_frame, text="Pause", font=ui_font, command=pause_resume_music)
     pause_button.pack(side="left", padx=10)
     stop_button = tk.Button(button_frame, text="Stop", font=ui_font, command=stop_music)
     stop_button.pack(side="left", padx=10)
