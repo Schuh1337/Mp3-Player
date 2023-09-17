@@ -1,4 +1,4 @@
-# Simple-Mp3-Player
+# Simple-Mp3-Player [Under 100 Lines]
 
 Required Modules:
 
