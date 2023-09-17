@@ -12,19 +12,19 @@ class MusicPlayer:
         self.paused = False
         self.paused_position = 0
         self.current_music = None
-        
+
     def play_music(self, music_file):
         pygame.mixer.music.stop()
         self.current_music = music_file
         pygame.mixer.music.load(music_file)
         pygame.mixer.music.play()
         self.paused = False
-        
+
     def stop_music(self):
         pygame.mixer.music.stop()
         self.current_music = None
         self.paused = False
-        
+
     def pause_resume_music(self):
         if self.current_music:
             if self.paused:
@@ -54,9 +54,12 @@ def set_volume(volume):
 def update_status_label(status_text):
     status_label.config(text=status_text)
 
+def disable_window_resizing(root):
+    root.resizable(False, False)
+
 if __name__ == "__main__":
     player = MusicPlayer()
-    
+
     root = tk.Tk()
     win32gui.ShowWindow(win32gui.GetForegroundWindow(), win32con.SW_HIDE)
     root.title("Mp3 Player")
@@ -82,11 +85,12 @@ if __name__ == "__main__":
     stop_button.pack(side="left", padx=10)
     volume_label = tk.Label(root, text="Volume:", font=("Helvetica", 12), fg="white", bg="#333333")
     volume_label.pack()
-    volume_slider = tk.Scale(root, from_=0, to=100, orient="horizontal", command=set_volume, length=200)  # Adjust the length
+    volume_slider = tk.Scale(root, from_=0, to=100, orient="horizontal", command=set_volume, length=200)
     volume_slider.set(50)
     volume_slider.pack()
     status_label = tk.Label(root, text="", font=("Helvetica", 12), fg="white", bg="#333333")
     status_label.pack(pady=10)
 
+    disable_window_resizing(root)
     root.mainloop()
     pygame.quit()
