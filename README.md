@@ -2,4 +2,4 @@
 
 Required Modules:
 
-win32 - pip install pywin32, pygame, tkinter
+win32, pygame, tkinter
