@@ -1,9 +1,5 @@
-import os
-import pygame
-import tkinter as tk
+import os, pygame, tkinter as tk, win32gui, win32con
 from tkinter import filedialog
-import win32gui
-import win32con
 
 class MusicPlayer:
     def __init__(self):
